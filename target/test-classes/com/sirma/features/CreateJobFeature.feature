@@ -62,5 +62,5 @@ And FIll in EmploymentType <employmentType>
 And Click on button Save
 
 Examples:
-|username			|password		|AddNewLocation			|Location		|Address	|company	|department		|location		|jobDescription					 |jobRequirements				|employmentType	|
+|username			|password		|AddNewLocation			|Location		|Address	|company	|department		|location		|jobDescription					 |jobRequirements				|
 |admin				|admin1234		|QA						|s				|s			|s			|Vamos con una apuesta para esta|Vamos con una apuesta para esta!|s								|

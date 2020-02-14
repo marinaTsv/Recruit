@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.sirma.cucumberoptions.TestRunner">
+      <class name="com.sirma.recruit.CreateCandidateManuallyTest">
         <methods>
-          <include name="setUpClass"/>
-          <include name="feature" invocation-numbers="0"/>
-          <include name="tearDownClass"/>
+          <include name="logIn"/>
+          <include name="initialize"/>
         </methods>
-      </class> <!-- com.sirma.cucumberoptions.TestRunner -->
+      </class> <!-- com.sirma.recruit.CreateCandidateManuallyTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -23,7 +23,7 @@ public class AddCandidateManuallyPage {
 	private By uploadFile  = By.xpath("//div[class='p-button p-component p-button p-component upload-resume-btn  p-button-text-icon-left']/span[2]/span");
 	
 //Buttons
-	private By save  = By.xpath("//button[class='btn btn-primary btn-lg']");
+	private By save  = By.xpath("//div[@class='form-footer']/button");             //button[class='btn btn-primary btn-lg']/span");
 	private By back  = By.xpath("//button[class='btn btn-outline-primary btn-lg back-btn-candidate']");
 	
 //Not Required

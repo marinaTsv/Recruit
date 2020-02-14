@@ -48,8 +48,6 @@ public class CreateCandidateManuallyTest extends Base{
     CandidatesPage cd = new CandidatesPage(driver);
 	Assert.assertTrue(cd.getAddCandidateButton().isDisplayed());
 
-
-
 	WebDriverWait wait = new WebDriverWait(driver, 10000);
 	wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='p-component-overlay p-dialog-mask']")));
 	WebElement element = cd.getAddCandidateButton();
@@ -66,8 +64,10 @@ public class CreateCandidateManuallyTest extends Base{
 	acp.getName().sendKeys(person.fullName());
 	System.out.print("Name Inserted");
 	acp.getEmail().sendKeys(person.email());
-	acp.getPhone().sendKeys(person.telephoneNumber());
 	
+	String phoneWithDash = person.telephoneNumber();
+	acp.getPhone().sendKeys(phoneWithDash.replace("-", ""));
+
 	WebElement jobsOfTalentPools = acp.getJobsOfTalentPools();
 	jobsOfTalentPools.sendKeys("J");
 	Thread.sleep(2000);

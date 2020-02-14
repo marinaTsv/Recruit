@@ -1,4 +1,4 @@
-package com.sirma.recruit;
+ package com.sirma.recruit;
 
 import java.io.IOException;
 
