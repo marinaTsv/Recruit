@@ -3,7 +3,7 @@ Feature: Create Job
 Scenario Outline: Create Job with all required field filled in
 Given Initialize browser 
 When Navigate to URL home page
-And Enter <username> and <password>
+And Enter user and pass
 And Click on Jobs menu
 And Click on Create Job button
 And Create Jobs form opens

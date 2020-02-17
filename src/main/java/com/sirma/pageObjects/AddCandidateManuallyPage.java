@@ -19,8 +19,9 @@ public class AddCandidateManuallyPage {
 	private By source  = By.xpath("//div[@id='source']/div/div/div[2]/div/input");
 	
 //Upload file/photo
-	private By uploadPhoto  = By.xpath("//*[text()='Upload photo']");
-	private By uploadFile  = By.xpath("//div[class='p-button p-component p-button p-component upload-resume-btn  p-button-text-icon-left']/span[2]/span");
+	private By uploadPhoto  = By.xpath("//*[@id='imgUpload']");
+
+	private By uploadFile  = By.xpath("//*[@id='cvUpload']");
 	
 //Buttons
 	private By save  = By.xpath("//div[@class='form-footer']/button");             //button[class='btn btn-primary btn-lg']/span");
@@ -45,7 +46,7 @@ public class AddCandidateManuallyPage {
 	public WebElement getSource() {
 		return driver.findElement(source);
 	}
-	public WebElement getWebelement() {
+	public WebElement getUploadPhoto() {
 		return driver.findElement(uploadPhoto);
 	}
 	public WebElement getUploadFile() {
