@@ -20,7 +20,6 @@ public class AddCandidateManuallyPage {
 	
 //Upload file/photo
 	private By uploadPhoto  = By.xpath("//*[@id='imgUpload']");
-
 	private By uploadFile  = By.xpath("//*[@id='cvUpload']");
 	
 //Buttons

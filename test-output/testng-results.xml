@@ -2,20 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-02-17T14:02:03 EET" name="Default suite" finished-at="2020-02-17T14:02:33 EET" duration-ms="30024">
+  <suite started-at="2020-02-18T17:14:19 EET" name="Default suite" finished-at="2020-02-18T17:14:53 EET" duration-ms="34578">
     <groups>
     </groups>
-    <test started-at="2020-02-17T14:02:03 EET" name="Default test" finished-at="2020-02-17T14:02:33 EET" duration-ms="30024">
-      <class name="com.sirma.recruit.CreateCandidateManuallyWithFileUploadTest">
-        <test-method is-config="true" signature="initialize()[pri:0, instance:com.sirma.recruit.CreateCandidateManuallyWithFileUploadTest@3d121db3]" started-at="2020-02-17T14:02:03 EET" name="initialize" finished-at="2020-02-17T14:02:08 EET" duration-ms="4833" status="PASS">
+    <test started-at="2020-02-18T17:14:19 EET" name="Default test" finished-at="2020-02-18T17:14:53 EET" duration-ms="34578">
+      <class name="com.sirma.recruit.CreateJob_AddEmploymentTypeTest">
+        <test-method signature="openCreateJob()[pri:0, instance:com.sirma.recruit.CreateJob_AddEmploymentTypeTest@23529fee]" started-at="2020-02-18T17:14:19 EET" name="openCreateJob" finished-at="2020-02-18T17:14:53 EET" duration-ms="34541" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initialize -->
-        <test-method signature="logIn()[pri:0, instance:com.sirma.recruit.CreateCandidateManuallyWithFileUploadTest@3d121db3]" started-at="2020-02-17T14:02:08 EET" name="logIn" finished-at="2020-02-17T14:02:33 EET" duration-ms="25148" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- logIn -->
-      </class> <!-- com.sirma.recruit.CreateCandidateManuallyWithFileUploadTest -->
+        </test-method> <!-- openCreateJob -->
+      </class> <!-- com.sirma.recruit.CreateJob_AddEmploymentTypeTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

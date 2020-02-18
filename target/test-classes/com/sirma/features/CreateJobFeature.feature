@@ -3,7 +3,7 @@ Feature: Create Job
 Scenario Outline: Create Job with all required field filled in
 Given Initialize browser 
 When Navigate to URL home page
-And Enter user and pass
+And Enter <username> and <password>
 And Click on Jobs menu
 And Click on Create Job button
 And Create Jobs form opens
@@ -15,6 +15,7 @@ And FIll in JobDescription <jobDescription>
 And FIll in JobRequirements <jobRequirements>
 And FIll in EmploymentType <employmentType>
 And Click on button Save
+And End test
 
 
 
@@ -39,6 +40,7 @@ And FIll in JobDescription <jobDescription>
 And FIll in JobRequirements <jobRequirements>
 And FIll in EmploymentType <employmentType>
 And Click on button Save
+And End test
 
 Examples:
 |username			|password		|AddNewLocation			|Location		|Address	|company	|department		|location		|jobDescription					|jobRequirements				|employmentType	|
@@ -60,6 +62,7 @@ And FIll in JobDescription <jobDescription>
 And FIll in JobRequirements <jobRequirements>
 And FIll in EmploymentType <employmentType>
 And Click on button Save
+And End test
 
 Examples:
 |username			|password		|AddNewLocation			|Location		|Address	|company	|department		|location		|jobDescription					 |jobRequirements				|

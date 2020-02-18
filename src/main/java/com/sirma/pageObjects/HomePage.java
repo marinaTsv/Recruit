@@ -12,16 +12,16 @@ public class HomePage {
 		this.driver = driver;
 	}
 	//upper navbar
-	private By menu_button  = By.xpath("/html/body/div/div/div[2]/nav/div[1]/div[1]/a[1]");
-	private By language_button  = By.xpath("/html/body/div/div/div[2]/nav/div[1]/div[2]/div/button");
-	private By mylogo  = By.xpath("/html/body/div/div/div[2]/nav/a/div");
-	private By logged_user_button  = By.xpath("/html/body/div/div/div[2]/nav/div[2]/div/div/button");
+	private By menu_button  = By.xpath("");
+	private By language_button  = By.xpath("");
+	private By mylogo  = By.xpath("");
+	private By logged_user_button  = By.xpath("");
 
 	//left side navbar
 	private By dashboard  = By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div/ul/li[1]/a");
 	private By tasks  = By.xpath("/html/body/div/div/div[2]/div[1]/div[1]/div/div/ul/li[2]/a");
 	private By jobs  = By.xpath("/html/body/div/div/div[2]/div[1]/div[1]/div/div/ul/li[3]/a");
-	private By candidates  = By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div/ul/li[4]/a");
+	private By candidates  = By.xpath("//a[@data-flag='candidates']");//("/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div/ul/li[4]/a");
 	private By settings  = By.xpath("/html/body/div/div/div[2]/div[1]/div[1]/div/div/ul/li[5]/a");
 	
 	

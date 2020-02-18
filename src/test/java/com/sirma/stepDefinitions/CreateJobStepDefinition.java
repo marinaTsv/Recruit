@@ -7,15 +7,20 @@ import io.codearte.jfairy.Fairy;
 import io.codearte.jfairy.producer.company.Company;
 import io.codearte.jfairy.producer.person.Person;
 
+import java.util.Properties;
+
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
 import com.sirma.pageObjects.CreateJobPage;
 import com.sirma.pageObjects.CreateJob_AddNewLocationPage;
+import com.sirma.pageObjects.LogInPage;
 import com.sirma.resources.Base;
 
 @RunWith(Cucumber.class)
@@ -24,6 +29,19 @@ import com.sirma.resources.Base;
 public class CreateJobStepDefinition extends Base {
 	CreateJobPage cjp = new CreateJobPage(driver);
 	WebDriverWait wait = new WebDriverWait(driver, 20000);
+	
+
+	
+	 @And("^Fill in user and pass$")
+	    public void fill_in_user_and_pass() throws Throwable {
+    	LogInPage lp = new LogInPage(driver);
+    	String user = prop.getProperty("user");
+    	System.out.println(user);
+		lp.getEmailTextField().sendKeys(user);
+		lp.getPasswordTextField().sendKeys(prop.getProperty("password"));
+		lp.getLoginButton().click();		
+    }
+    
     @And("^Fill in Title (.+)$")
     public void fill_in_title(String title) throws Throwable {
     	cjp.gettitleTextField().sendKeys(title);
@@ -118,5 +136,7 @@ public class CreateJobStepDefinition extends Base {
 		cjp.getName().sendKeys("Employment A");
 		cjp.getSave_EmploymentType().click();
     }
+    
+
 
 }

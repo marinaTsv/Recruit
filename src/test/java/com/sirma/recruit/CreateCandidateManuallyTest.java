@@ -78,6 +78,11 @@ public class CreateCandidateManuallyTest extends Base{
 	Thread.sleep(2000);
 	source.sendKeys(Keys.ENTER);
 	
+//upload files:
+	
+	acp.getUploadPhoto().sendKeys(prop.getProperty("createCandidatePhotoUpload"));
+	acp.getUploadFile().sendKeys(prop.getProperty("createCandidateCVUpload"));
+	
 	acp.getSave().click();
 	}
 }

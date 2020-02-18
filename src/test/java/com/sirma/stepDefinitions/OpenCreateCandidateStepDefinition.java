@@ -41,6 +41,8 @@ public class OpenCreateCandidateStepDefinition extends Base {
 			element.click();
 		}
 	}
+	
+	
 
 	@Then("^Add Candidate form opens$")
 	public void add_Candidate_form_opens() throws Throwable {
