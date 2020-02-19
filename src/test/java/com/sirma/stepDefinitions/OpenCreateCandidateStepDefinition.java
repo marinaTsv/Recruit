@@ -1,5 +1,7 @@
 package com.sirma.stepDefinitions;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -23,11 +25,13 @@ import junit.framework.Assert;
 
 @RunWith(Cucumber.class)
 public class OpenCreateCandidateStepDefinition extends Base {
+	private static Logger log = LogManager.getLogger(OpenCreateCandidateStepDefinition.class.getName());
 
 	@And("^Click on Candidates menu$")
 	public void click_on_Candidates_menu() throws Throwable {
 		HomePage hp = new HomePage(driver);
 		hp.getCandidates().click();
+		log.atDebug().log("Click on Candidates Menu");
 	}
 
 	@When("^Click on Add Candidates button$")
@@ -40,6 +44,7 @@ public class OpenCreateCandidateStepDefinition extends Base {
 			System.out.println("Enabled&Displayed");
 			element.click();
 		}
+		log.atDebug().log("Click onAdd  Candidates button");
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.sirma.stepDefinitions;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -24,6 +26,7 @@ import junit.framework.Assert;
 
 @RunWith(Cucumber.class)
 public class OpenCreateJobsStepDefinition extends Base {
+	private static Logger log = LogManager.getLogger(OpenCreateJobsStepDefinition.class.getName());
 
 	@And("^Click on Jobs menu$")
 	public void click_on_jobs_menu() throws Throwable {
@@ -42,12 +45,12 @@ public class OpenCreateJobsStepDefinition extends Base {
 		
 		 if (element.isEnabled() && element.isDisplayed()) {
 				System.out.println("Enabled&Displayed");
- 				element.click();		
+ 				element.click();	
+ 				log.atDebug().log("Click on Create Job button");
 		
 /*		if (element.isEnabled() && element.isDisplayed()) {
 			System.out.println("Enabled&Displayed");
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-
 		}*/
 	}
 	}

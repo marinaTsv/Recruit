@@ -64,7 +64,7 @@ public class CreateCandidateManuallyWithFileUploadTest extends Base{
 	acp.getName().sendKeys(person.fullName());
 	System.out.print("Name Inserted");
 	acp.getEmail().sendKeys(person.email());
-	
+//Telephone	
 	String phoneWithDash = person.telephoneNumber();
 	acp.getPhone().sendKeys(phoneWithDash.replace("-", ""));
 
@@ -85,6 +85,15 @@ public class CreateCandidateManuallyWithFileUploadTest extends Base{
 	 acp.getUploadPhoto().sendKeys("C:\\Users\\marina.tsvetkova\\Pictures\\photo.jpg");   
 	 Thread.sleep(3000);
 	 acp.getUploadFile().sendKeys("C:\\Users\\marina.tsvetkova\\Pictures\\CVasdkik c.docx"); 
-	 acp.getSave().click();
+	 wait.until(ExpectedConditions.visibilityOf(acp.getRemoveResume()));
+	// WebElement footer = driver.findElement(By.xpath("//div[@class='version-footer']"));
+	// wait.until(ExpectedConditions.invisibilityOf(footer));
+	 Thread.sleep(3000);
+	// acp.getRemoveResume().click();
+	 WebElement removeFile = acp.getRemoveResume();
+	 JavascriptExecutor executor = (JavascriptExecutor)driver;
+	 executor.executeScript("arguments[0].click();", removeFile);
+	 acp.getUploadFile().sendKeys("C:\\Users\\marina.tsvetkova\\Pictures\\CVasdkik c - Copy.docx"); 
+	 //acp.getSave().click();
 	}
 }

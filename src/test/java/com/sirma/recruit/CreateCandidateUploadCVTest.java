@@ -82,6 +82,14 @@ public class CreateCandidateUploadCVTest extends Base{
 	//JavascriptExecutor js = (JavascriptExecutor)driver;
 	//js.executeScript("arguments[0].click();", elementSubmit);
 	//aup.getSubmit().click();
+	aup.get
+	
+	
 	aup.getCancel().click();
+	
+	
+	
 	}
+	
+	
 }

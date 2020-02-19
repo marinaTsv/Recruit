@@ -9,6 +9,8 @@ import io.codearte.jfairy.producer.person.Person;
 
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -27,24 +29,17 @@ import com.sirma.resources.Base;
 
 
 public class CreateJobStepDefinition extends Base {
+	private static Logger log = LogManager.getLogger(CreateJobStepDefinition.class.getName());
 	CreateJobPage cjp = new CreateJobPage(driver);
 	WebDriverWait wait = new WebDriverWait(driver, 20000);
 	
 
-	
-	 @And("^Fill in user and pass$")
-	    public void fill_in_user_and_pass() throws Throwable {
-    	LogInPage lp = new LogInPage(driver);
-    	String user = prop.getProperty("user");
-    	System.out.println(user);
-		lp.getEmailTextField().sendKeys(user);
-		lp.getPasswordTextField().sendKeys(prop.getProperty("password"));
-		lp.getLoginButton().click();		
-    }
+
     
     @And("^Fill in Title (.+)$")
     public void fill_in_title(String title) throws Throwable {
     	cjp.gettitleTextField().sendKeys(title);
+    	log.atDebug().log("Fill in title");
     }
 
     @And("^FIll in Company (.+)$")
@@ -54,6 +49,7 @@ public class CreateJobStepDefinition extends Base {
     	companyDropDown.sendKeys(company);
 		Thread.sleep(2000);
 		companyDropDown.sendKeys(Keys.ENTER);
+		log.atDebug().log("Fill in company");
     }
 
     @And("^FIll in Department (.+)$")
@@ -62,6 +58,7 @@ public class CreateJobStepDefinition extends Base {
 		departmentdropDown.sendKeys(department);
 		Thread.sleep(2000);
 		departmentdropDown.sendKeys(Keys.ENTER);
+		log.atDebug().log("Fill in department");
     }
 
     @And("^FIll in Location (.+)$")
@@ -70,6 +67,7 @@ public class CreateJobStepDefinition extends Base {
 		locationDropDown.sendKeys(location);
 		Thread.sleep(2000);
 		locationDropDown.sendKeys(Keys.ENTER);
+		log.atDebug().log("Fill in location");
     }
 
     @And("^FIll in JobDescription (.+)$")
@@ -81,6 +79,7 @@ public class CreateJobStepDefinition extends Base {
 		Thread.sleep(2000);
 		cjp.getJobDescriptionBody().sendKeys(jobdescription);
 		driver.switchTo().defaultContent();
+		log.atDebug().log("Fill in Job Description");
     }
 
     @And("^FIll in JobRequirements (.+)$")
@@ -92,6 +91,7 @@ public class CreateJobStepDefinition extends Base {
 		Thread.sleep(2000);
 		jobRequirementsiFrameBody.sendKeys(jobrequirements);
 		driver.switchTo().defaultContent();
+		log.atDebug().log("Fill in job requirements");
     }
 
     @And("^FIll in EmploymentType (.+)$")
@@ -100,16 +100,19 @@ public class CreateJobStepDefinition extends Base {
 		employmentType.sendKeys(employmenttype);
 		Thread.sleep(2000);
 		employmentType.sendKeys(Keys.ENTER);
+		log.atDebug().log("Fill in employment type");
     }
 
     @And("^Click on button Save$")
     public void click_on_button_save() throws Throwable {
     	cjp.getSaveButton().click();
+    	log.atDebug().log("click Save");
     }
     
     @And("^Click button AddNewLocation$")
     public void click_button_addnewlocation() throws Throwable {
 		cjp.getAddNewLocationButton().click();
+		log.atDebug().log("Click Add new location");
     }
 
     @And("^Fill in Location Name, Address, Country,State, City,ZipCode and click button Save $")
@@ -122,6 +125,7 @@ public class CreateJobStepDefinition extends Base {
 		cjp.getCountry().sendKeys(person.fullName());
 		cjp.getCity().sendKeys(person.fullName());
 		cjp.getSave().click();
+		log.atDebug().log("Fill in Location Name, Address, Country,State, City,ZipCode and click button Save");
     }
     
     @And("^Click button AddNewEmploymentType$")
@@ -129,12 +133,14 @@ public class CreateJobStepDefinition extends Base {
 		driver.switchTo().defaultContent();
 		WebElement addNew_EmploymentType = cjp.getAddNewEmploymentTypeButton();
 		addNew_EmploymentType.click();
+		log.atDebug().log("Click button AddNewEmploymentType");
     }
 
     @And("^Fill in the NewEmploymentType Name and click button Save $")
     public void fill_in_the_newemploymenttype_name_and_click_button_save() throws Throwable {
 		cjp.getName().sendKeys("Employment A");
 		cjp.getSave_EmploymentType().click();
+		log.atDebug().log("Fill in the NewEmploymentType Name and click button Save");
     }
     
 

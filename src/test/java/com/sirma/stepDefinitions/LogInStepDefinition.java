@@ -10,6 +10,8 @@ import junit.framework.Assert;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +26,7 @@ import com.sirma.resources.Base;
 
 @RunWith(Cucumber.class)
 public class LogInStepDefinition extends Base {
+	private static Logger log = LogManager.getLogger(LogInStepDefinition.class.getName());
 
 	@Given("^Initialize browser$")
 	public void initialize_browser() throws Throwable {
@@ -44,6 +47,7 @@ public class LogInStepDefinition extends Base {
 		lp.getEmailTextField().sendKeys(username);
 		lp.getPasswordTextField().sendKeys(password);
 		lp.getLoginButton().click();
+		log.atDebug().log("Log in");
 		
     }
 		

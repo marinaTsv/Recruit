@@ -21,7 +21,7 @@ public class AddCandidateManuallyPage {
 //Upload file/photo
 	private By uploadPhoto  = By.xpath("//*[@id='imgUpload']");
 	private By uploadFile  = By.xpath("//*[@id='cvUpload']");
-	
+	private By removeResume = By.xpath("//div[@class='upload-cv-section']/div[1]/div/div/button[2]");
 //Buttons
 	private By save  = By.xpath("//div[@class='form-footer']/button");             //button[class='btn btn-primary btn-lg']/span");
 	private By back  = By.xpath("//button[class='btn btn-outline-primary btn-lg back-btn-candidate']");
@@ -33,6 +33,9 @@ public class AddCandidateManuallyPage {
 	private By note  = By.xpath("");
 	private By coverLetter  = By.xpath("");
 	
+	public WebElement getRemoveResume() {
+		return driver.findElement(removeResume);
+	}
 	public WebElement getName() {
 		return driver.findElement(name);
 	}

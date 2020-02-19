@@ -1,6 +1,6 @@
 Feature: Open Create Jobs
 
-Scenario Outline: Open Candidates
+Scenario Outline: Open Create Jobs
 Given Initialize browser 
 When Navigate to URL home page
 And Enter <username> and <password>

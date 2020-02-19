@@ -1,15 +1,51 @@
 Feature: Create Candidate
 
-Scenario Outline: Create Candidates required only
+Scenario Outline: Create Candidate Manually with required only
 Given Initialize browser 
 When Navigate to URL home page
 And Enter <username> and <password>
 And Click on Candidates menu
-And Click on Add Candidates, Add Manually
-And fill in Name
-And fill in email
-And fill in Jobs or Talent Pools
-And fill in Source
+And Click on Add Candidates button, Add Manually
+And Fill in Name
+And Fill in email
+And Fill in Jobs or Talent Pools
+And Fill in Source
+And Click button Save
+And End test
+
+Examples:
+|username			|password		|
+|admin				|admin1234		|
+
+Scenario Outline: Create Candidate Manually with Picture upload 
+Given Initialize browser 
+When Navigate to URL home page
+And Enter <username> and <password>
+And Click on Candidates menu
+And Click on Add Candidates button, Add Manually
+And Fill in Name
+And Fill in email
+And Fill in Jobs or Talent Pools
+And Fill in Source
+And Upload photo
+And Click button Save
+And End test
+
+Examples:
+|username			|password		|
+|admin				|admin1234		|
+
+Scenario Outline: Create Candidate Manually with CV/Resume upload
+Given Initialize browser 
+When Navigate to URL home page
+And Enter <username> and <password>
+And Click on Candidates menu
+And Click on Add Candidates button, Add Manually
+And Fill in Name
+And Fill in email
+And Fill in Jobs or Talent Pools
+And Fill in Source
+And Upload CV_Resume
 And Click button Save
 And End test
 
