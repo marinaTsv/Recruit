@@ -28,6 +28,7 @@ import junit.framework.Assert;
 
 public class CreateCandidateManuallyWithFileUploadTest extends Base{
 
+	String nameCandidate= null;
 	@BeforeTest
 	public void initialize() throws IOException {
 		WebDriver driver = initializeDriver();
@@ -61,8 +62,8 @@ public class CreateCandidateManuallyWithFileUploadTest extends Base{
 	//first create Fairy object. By default - Locale is English
 	Fairy fairy = Fairy.create();
 	Person person = fairy.person();
-	acp.getName().sendKeys(person.fullName());
-	System.out.print("Name Inserted");
+	nameCandidate = person.fullName();
+	acp.getName().sendKeys(nameCandidate);
 	acp.getEmail().sendKeys(person.email());
 //Telephone	
 	String phoneWithDash = person.telephoneNumber();
@@ -94,6 +95,15 @@ public class CreateCandidateManuallyWithFileUploadTest extends Base{
 	 JavascriptExecutor executor = (JavascriptExecutor)driver;
 	 executor.executeScript("arguments[0].click();", removeFile);
 	 acp.getUploadFile().sendKeys("C:\\Users\\marina.tsvetkova\\Pictures\\CVasdkik c - Copy.docx"); 
-	 //acp.getSave().click();
+	 acp.getSave().click();
+
+	 //Verify the candidate was created
+	 CandidatesPage cp = new CandidatesPage(driver);
+	 Thread.sleep(3000);
+	 WebElement nameFilter = cp.getNameInputFilter();
+	 nameFilter.sendKeys(nameCandidate);
+	 WebElement result = driver.findElement(By.xpath(("//p[contains(@title, '"+ nameCandidate + "')]")));
+	 Assert.assertTrue(result.isDisplayed());
+
 	}
 }

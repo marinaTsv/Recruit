@@ -28,10 +28,19 @@ public class AddCandidateManuallyPage {
 	
 //Not Required
 	private By phone  = By.xpath("//*[@id='phone']");
-	private By socialLinks  = By.xpath("");
-	private By links  = By.xpath("");
-	private By note  = By.xpath("");
-	private By coverLetter  = By.xpath("");
+	private By socialLinks  = By.xpath("//*[@id='socialLinks']");
+	private By addSocialLinksButton  = By.xpath("//div[@class='plus-btn-container']/button");
+	private By addLinksButton  = By.xpath("//form[@class='form-align']/div[3]/div[2]/button");
+	private By links  = By.xpath("//*[@id='links']");
+	private By note  = By.xpath("//*[@id='note']");
+	private By coverLetter  = By.xpath("//*[@id='coverLetter']");
+	
+	public WebElement getAddSocialLinksButton() {
+		return driver.findElement(addSocialLinksButton);
+	}
+	public WebElement getAddLinksButton() {
+		return driver.findElement(addLinksButton);
+	}
 	
 	public WebElement getRemoveResume() {
 		return driver.findElement(removeResume);

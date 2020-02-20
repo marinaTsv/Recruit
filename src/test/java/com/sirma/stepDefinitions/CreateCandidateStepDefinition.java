@@ -84,9 +84,19 @@ public class CreateCandidateStepDefinition extends Base {
    	 acp.getUploadPhoto().sendKeys("C:\\Users\\marina.tsvetkova\\Pictures\\photo.jpg");   
     }
     
-    @And("^Upload CV_ Resume$")
+    @And("^Upload CV_Resume$")
     public void upload_cvresume() throws Throwable {
    	 Thread.sleep(3000);
    	 acp.getUploadFile().sendKeys("C:\\Users\\marina.tsvetkova\\Pictures\\CVasdkik c.docx"); 
+    }
+    
+    @And("^Click button Cancel$")
+    public void click_button_cancel() throws Throwable {
+        acp.getBack().click();
+    }
+    
+    @And("^click button RemoveResume$")
+    public void click_button_removeresume() throws Throwable {
+        throw new PendingException();
     }
 }

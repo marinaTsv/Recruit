@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-
+import com.sirma.pageObjects.CandidatesPage;
 import com.sirma.pageObjects.HomePage;
 import com.sirma.pageObjects.LogInPage;
 import com.sirma.resources.Base;
@@ -37,6 +37,13 @@ public class LogInTest2 extends Base {
 		String actualURL = driver.getCurrentUrl();//actual url after perform of the above actions
 		String expectedURL = prop.getProperty("ExpectedURLafterLogIn");//the url after successfull login
 		//Assert.assertEquals(expectedURL, actualURL);
+		HomePage hp = new HomePage(driver);
+		CandidatesPage cp = new CandidatesPage(driver);
+		hp.getCandidates().click();
+		cp.getNameInputFilter().sendKeys("A");
+		
+		
+		
 		}
 	
 

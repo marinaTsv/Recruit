@@ -14,11 +14,13 @@ public class CandidatesPage {
 	
 	//Candidates
 	private By addCandidateButton  = By.xpath("//div[@class='css-bg1rzq-control']");
-	
+	private By nameInputFilter = By.xpath(("//div[@class='cnadidate-grid-align row']/div/div[1]/div/div[2]/table/thead/tr/th[1]/input"));
 	
 	//Candidates
 	public WebElement getAddCandidateButton() {
 		return driver.findElement(addCandidateButton);
 	}
-
+	public WebElement getNameInputFilter() {
+		return driver.findElement(nameInputFilter);
+	}
 }
