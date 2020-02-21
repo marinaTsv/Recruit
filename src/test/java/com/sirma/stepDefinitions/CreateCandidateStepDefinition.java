@@ -34,6 +34,7 @@ public class CreateCandidateStepDefinition extends Base {
 	AddCandidateManuallyPage acp = new AddCandidateManuallyPage(driver);
 	Fairy fairy = Fairy.create();
 	Person person = fairy.person();
+	String nameCandidate = null;
 	
     @And("^Click on Add Candidates button, Add Manually$")
     public void click_on_add_candidates_button_add_manually() throws Throwable {
@@ -48,7 +49,8 @@ public class CreateCandidateStepDefinition extends Base {
 
     @And("^Fill in Name$")
     public void fill_in_name() throws Throwable {
-    	acp.getName().sendKeys(person.fullName());
+    	nameCandidate = person.fullName();
+    	acp.getName().sendKeys(nameCandidate);
 
     }
 
@@ -92,11 +94,33 @@ public class CreateCandidateStepDefinition extends Base {
     
     @And("^Click button Cancel$")
     public void click_button_cancel() throws Throwable {
-        acp.getBack().click();
+    	WebElement buttonBack = acp.getBack();
+    	wait.until(ExpectedConditions.elementToBeClickable(buttonBack));
+    	buttonBack.click();
     }
     
     @And("^click button RemoveResume$")
     public void click_button_removeresume() throws Throwable {
         throw new PendingException();
+    }
+    
+    @Then("^Validate the Candidate was created$")
+    public void validate_the_candidate_was_created() throws Throwable {
+   	 CandidatesPage cp = new CandidatesPage(driver);
+   	 Thread.sleep(3000);
+   	 WebElement nameFilter = cp.getNameInputFilter();
+   	 nameFilter.sendKeys(nameCandidate);
+   	 WebElement result = driver.findElement(By.xpath(("//p[contains(@title, '"+ nameCandidate + "')]")));
+   	 Assert.assertTrue(result.isDisplayed());
+    }
+    
+    @Then("^Validate the Candidate was not created$")
+    public void validate_the_candidate_was_not_created() throws Throwable {
+   	 CandidatesPage cp = new CandidatesPage(driver);
+   	 Thread.sleep(3000);
+   	 WebElement nameFilter = cp.getNameInputFilter();
+   	 nameFilter.sendKeys(nameCandidate);
+   	 WebElement result = driver.findElement(By.xpath(("//p[contains(@title, '"+ nameCandidate + "')]")));
+   	 Assert.assertFalse(result.isDisplayed());
     }
 }

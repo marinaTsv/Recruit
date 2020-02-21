@@ -1,5 +1,6 @@
 Feature: Open Create Candidate
 
+@Open_Create_Candidate
 Scenario Outline: Open Create Candidates
 Given Initialize browser 
 When Navigate to URL home page

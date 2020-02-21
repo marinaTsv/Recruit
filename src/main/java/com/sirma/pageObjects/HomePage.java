@@ -20,7 +20,7 @@ public class HomePage {
 	//left side navbar
 	private By dashboard  = By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div/ul/li[1]/a");
 	private By tasks  = By.xpath("/html/body/div/div/div[2]/div[1]/div[1]/div/div/ul/li[2]/a");
-	private By jobs  = By.xpath("/html/body/div/div/div[2]/div[1]/div[1]/div/div/ul/li[3]/a");
+	private By jobs  = By.xpath("//a[@data-flag='job']");
 	private By candidates  = By.xpath("//a[@data-flag='candidates']");//("/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div/ul/li[4]/a");
 	private By settings  = By.xpath("/html/body/div/div/div[2]/div[1]/div[1]/div/div/ul/li[5]/a");
 	

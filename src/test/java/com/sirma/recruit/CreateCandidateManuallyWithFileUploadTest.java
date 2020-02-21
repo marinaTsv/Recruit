@@ -104,6 +104,5 @@ public class CreateCandidateManuallyWithFileUploadTest extends Base{
 	 nameFilter.sendKeys(nameCandidate);
 	 WebElement result = driver.findElement(By.xpath(("//p[contains(@title, '"+ nameCandidate + "')]")));
 	 Assert.assertTrue(result.isDisplayed());
-
 	}
 }

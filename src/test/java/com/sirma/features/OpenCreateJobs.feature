@@ -1,5 +1,6 @@
 Feature: Open Create Jobs
 
+@Open_Create_Candidate
 Scenario Outline: Open Create Jobs
 Given Initialize browser 
 When Navigate to URL home page

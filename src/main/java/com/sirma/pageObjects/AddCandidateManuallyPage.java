@@ -24,7 +24,7 @@ public class AddCandidateManuallyPage {
 	private By removeResume = By.xpath("//div[@class='upload-cv-section']/div[1]/div/div/button[2]");
 //Buttons
 	private By save  = By.xpath("//div[@class='form-footer']/button");             //button[class='btn btn-primary btn-lg']/span");
-	private By back  = By.xpath("//button[class='btn btn-outline-primary btn-lg back-btn-candidate']");
+	private By back  = By.xpath("//button[@class='btn btn-outline-primary btn-lg back-btn-candidate']");
 	
 //Not Required
 	private By phone  = By.xpath("//*[@id='phone']");

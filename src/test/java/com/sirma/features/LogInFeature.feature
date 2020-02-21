@@ -1,6 +1,6 @@
 Feature:  LogIn
 
-
+@Log_In
 Scenario Outline: Log into the application with valid credentials
 Given Initialize browser 
 And Navigate to URL home page
