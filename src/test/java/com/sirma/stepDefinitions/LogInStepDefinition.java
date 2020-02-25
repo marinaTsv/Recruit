@@ -8,6 +8,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.junit.Cucumber;
 import junit.framework.Assert;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -65,9 +67,15 @@ public class LogInStepDefinition extends Base {
 		Assert.assertEquals(expectedURL, actualURL);
 		}*/
 	    
-    @Then("^URL changes to expected URL$")
-    public void url_changes_to_expected_URL() throws Throwable {
-    	//TO DO
+    @Then("^Dashboard (.+) opens$")
+    public void dashboard_opens(String arg) throws Throwable {
+     	 List<WebElement> uploadedFile = driver.findElements(By.xpath("//span[.='Dashboard']"));
+     	 if(arg.equals("not")) {
+           	 Assert.assertTrue(uploadedFile.isEmpty()); 
+     	 }
+     	 else {
+           	 Assert.assertFalse(uploadedFile.isEmpty());
+     	 }
     }
     }
 	

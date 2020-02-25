@@ -19,22 +19,36 @@ import com.sirma.resources.Base;
 public class AGeneralStepDefinition extends Base {
 
 	private static Logger log = LogManager.getLogger(AGeneralStepDefinition.class.getName());
-    @And("^End test$")
-    public void end_test() throws Throwable {
-       driver.close();
-       log.atDebug().log("Driver closed");
-    }
 
-	 @And("^Fill in user and pass$")
-	    public void fill_in_user_and_pass() throws Throwable {
-			Properties prop = new Properties();
-			FileInputStream fis = new FileInputStream("D:\\Projects\\Recruit\\src\\main\\java\\com\\sirma\\resources\\data.properties");
-			prop.load(fis);
-	    	LogInPage lp = new LogInPage(driver);
-			lp.getEmailTextField().sendKeys(prop.getProperty("user"));
-			lp.getPasswordTextField().sendKeys(prop.getProperty("password"));
-			lp.getLoginButton().click();
-   }
+	@And("^End test$")
+	public void end_test() throws Throwable {
+		driver.close();
+		log.atDebug().log("Driver closed");
+	}
+
+	@And("^Fill in user and pass$")
+	public void fill_in_user_and_pass() throws Throwable {
+		/*
+		 * Properties prop = new Properties(); FileInputStream fis = new
+		 * FileInputStream(
+		 * "D:\\Projects\\Recruit\\src\\main\\java\\com\\sirma\\resources\\data.properties"
+		 * ); prop.load(fis);
+		 */
+		propertiesFileRead();
+		LogInPage lp = new LogInPage(driver);
+		lp.getEmailTextField().sendKeys(prop.getProperty("user"));
+		lp.getPasswordTextField().sendKeys(prop.getProperty("password"));
+		lp.getLoginButton().click();
+	}
+
+	@And("^Fill in user and pass2$")
+	public void fill_in_user_and_pass2() throws Throwable {
+		propertiesFileRead();
+		LogInPage lp = new LogInPage(driver);
+		System.out.println(prop.getProperty("user"));
+		System.out.println(prop.getProperty("password"));
+		lp.getEmailTextField().sendKeys(prop.getProperty("user"));
+		lp.getPasswordTextField().sendKeys(prop.getProperty("password"));
+		lp.getLoginButton().click();
+	}
 }
-	
-

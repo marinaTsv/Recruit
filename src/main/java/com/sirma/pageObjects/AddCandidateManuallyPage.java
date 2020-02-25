@@ -34,7 +34,8 @@ public class AddCandidateManuallyPage {
 	private By links  = By.xpath("//*[@id='links']");
 	private By note  = By.xpath("//*[@id='note']");
 	private By coverLetter  = By.xpath("//*[@id='coverLetter']");
-	
+
+	//
 	public WebElement getAddSocialLinksButton() {
 		return driver.findElement(addSocialLinksButton);
 	}

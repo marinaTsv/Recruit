@@ -1,6 +1,7 @@
 package com.sirma.recruit;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -94,8 +95,11 @@ public class CreateCandidateManuallyWithFileUploadTest extends Base{
 	 WebElement removeFile = acp.getRemoveResume();
 	 JavascriptExecutor executor = (JavascriptExecutor)driver;
 	 executor.executeScript("arguments[0].click();", removeFile);
-	 acp.getUploadFile().sendKeys("C:\\Users\\marina.tsvetkova\\Pictures\\CVasdkik c - Copy.docx"); 
-	 acp.getSave().click();
+	 acp.getUploadFile().sendKeys("C:\\Users\\marina.tsvetkova\\Pictures\\Doc2.docx"); 
+	 List<WebElement> uploadedFile = driver.findElements(By.xpath("//span[.='Upload File']"));
+	 Assert.assertTrue(uploadedFile.isEmpty());
+	 
+	 /*acp.getSave().click();
 
 	 //Verify the candidate was created
 	 CandidatesPage cp = new CandidatesPage(driver);
@@ -103,6 +107,6 @@ public class CreateCandidateManuallyWithFileUploadTest extends Base{
 	 WebElement nameFilter = cp.getNameInputFilter();
 	 nameFilter.sendKeys(nameCandidate);
 	 WebElement result = driver.findElement(By.xpath(("//p[contains(@title, '"+ nameCandidate + "')]")));
-	 Assert.assertTrue(result.isDisplayed());
+	 Assert.assertTrue(result.isDisplayed());*/
 	}
 }

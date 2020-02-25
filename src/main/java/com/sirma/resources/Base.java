@@ -14,10 +14,17 @@ public class Base {
 	protected static WebDriver driver;
 	protected Properties prop = new Properties();
 	
-	public WebDriver initializeDriver() throws IOException {		
+	
+	public void propertiesFileRead() throws IOException {
 		FileInputStream fis = new FileInputStream(
 				"D:\\Projects\\Recruit\\src\\main\\java\\com\\sirma\\resources\\data.properties");
 		prop.load(fis);
+	}
+	public WebDriver initializeDriver() throws IOException {		
+		/*FileInputStream fis = new FileInputStream(
+				"D:\\Projects\\Recruit\\src\\main\\java\\com\\sirma\\resources\\data.properties");
+		prop.load(fis);*/
+		propertiesFileRead();
 		String browserName = prop.getProperty("browser");
 		if (browserName.equals("chrome")) {
 			System.setProperty("webdriver.chrome.driver", "D://PRG//chromedriver.exe");
@@ -31,4 +38,6 @@ public class Base {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 	}
+	
+	
 }
