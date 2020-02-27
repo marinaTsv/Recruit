@@ -1,23 +1,23 @@
 Feature:  LogIn
 
-@Log_In 
+@Log_In1 
 Scenario Outline: Log into the application with valid credentials
 Given Initialize browser 
 And Navigate to URL home page
 And Enter <username> and <password>
-Then Dashboard <> opens
+Then Dashboard opens
 And End test
 
 Examples:
 |username			|password		|
 |admin				|admin1234		|
 
-@Log_In 
+@Log_In2
 Scenario Outline: Log into the application with valid credentials Fail
 Given Initialize browser 
 And Navigate to URL home page
 And Enter <username> and <password>
-Then Dashboard <not> opens
+Then Dashboard does not open
 And End test
 
 Examples:

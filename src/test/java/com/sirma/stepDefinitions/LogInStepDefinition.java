@@ -32,51 +32,45 @@ public class LogInStepDefinition extends Base {
 
 	@Given("^Initialize browser$")
 	public void initialize_browser() throws Throwable {
+		driver = initializeDriver();
+	}
 
-    	 driver = initializeDriver();
-    }
-
-  
-    @When("^Navigate to URL home page$")
-    public void navigate_to_url_home_page() throws Throwable {
-    	driver.get(prop.getProperty("URL"));
+	@When("^Navigate to URL home page$")
+	public void navigate_to_url_home_page() throws Throwable {
+		driver.get(prop.getProperty("URL"));
 		driver.manage().window().maximize();
-    }
+	}
 
-    @And("^Enter (.+) and (.+)$")
-    public void enter_and(String username, String password) throws Throwable {
-    	LogInPage lp = new LogInPage(driver);
+	@And("^Enter (.+) and (.+)$")
+	public void enter_and(String username, String password) throws Throwable {
+		LogInPage lp = new LogInPage(driver);
 		lp.getEmailTextField().sendKeys(username);
 		lp.getPasswordTextField().sendKeys(password);
 		lp.getLoginButton().click();
 		log.atDebug().log("Log in");
-		
-    }
-		
-/*//	Validate successful login
-	    @Then("^URL changes to expected URL$")
-		public void url_changes_to_expected_URL() throws Throwable {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(
-				By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div/ul/li[1]/a/i")));
-		// click on the compose button as soon as the "compose" button is visible
-		driver.findElement(By.xpath("//div[contains(text(),'COMPOSE')]")).click();
-		String actualURL = driver.getCurrentUrl();// actual url after perform of the above actions
-		String expectedURL = prop.getProperty("ExpectedURLafterLogIn");// the url after successfull login
-		System.out.println(actualURL + " \n" + expectedURL);
-		Assert.assertEquals(expectedURL, actualURL);
-		}*/
-	    
-    @Then("^Dashboard (.+) opens$")
-    public void dashboard_opens(String arg) throws Throwable {
-     	 List<WebElement> uploadedFile = driver.findElements(By.xpath("//span[.='Dashboard']"));
-     	 if(arg.equals("not")) {
-           	 Assert.assertTrue(uploadedFile.isEmpty()); 
-     	 }
-     	 else {
-           	 Assert.assertFalse(uploadedFile.isEmpty());
-     	 }
-    }
-    }
-	
+	}
 
+	@Then("^Dashboard (.+) opens$")
+	public void dashboard_opens(String arg) throws Throwable {
+		/*
+		 * HomePage hp = new HomePage(driver); List<WebElement> dashboard =
+		 * driver.findElements(By.xpath("//a[@data-flag='candidates']")); CandidatesPage
+		 * cd = new CandidatesPage(driver);
+		 * Assert.assertTrue(cd.getAddCandidateButton().isDisplayed()); else
+		 * if(arg.equals("not")) { System.out.println("Arg2 is" + arg);
+		 * Assert.assertFalse(cd.getAddCandidateButton().isDisplayed()); }
+		 */
+	}
+
+	@Then("^Dashboard opens$")
+	public void dashboard_opens() throws Throwable {
+		List<WebElement> dashboard = driver.findElements(By.xpath("//a[@data-flag='candidates']"));
+		Assert.assertFalse(dashboard.isEmpty());
+	}
+
+	@Then("^Dashboard does not open$")
+	public void dashboard_does_not_open() throws Throwable {
+		List<WebElement> dashboard = driver.findElements(By.xpath("//a[@data-flag='candidates']"));
+		Assert.assertTrue(dashboard.isEmpty());
+	}
+}

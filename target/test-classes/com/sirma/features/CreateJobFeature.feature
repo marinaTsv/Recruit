@@ -13,9 +13,10 @@ And FIll in Company <company>
 And FIll in Department <department>
 And FIll in Location <location>
 And FIll in JobDescription <jobDescription>
-And FIll in JobRequirements <jobRequirements>
+
 And FIll in EmploymentType <employmentType>
 And Click on button Save
+And Validate the job was created
 And End test
 
 
@@ -39,9 +40,10 @@ And FIll in Department <department>
 And Click button AddNewLocation
 And Fill in Create Location
 And FIll in JobDescription <jobDescription>
-And FIll in JobRequirements <jobRequirements>
+
 And FIll in EmploymentType <employmentType>
 And Click on button Save
+And Validate the job was created
 And End test
 
 Examples:
@@ -60,12 +62,12 @@ And Create Jobs form opens
 And Fill in Title <title>
 And FIll in Company <company>
 And FIll in Department <department>
+And FIll in Location <location>
+And FIll in JobDescription <jobDescription>
 And Click button AddNewEmploymentType
 And Create NewEmploymentType
-And FIll in JobDescription <jobDescription>
-And FIll in JobRequirements <jobRequirements>
-And FIll in EmploymentType <employmentType>
 And Click on button Save
+And Validate the job was created
 And End test
 
 

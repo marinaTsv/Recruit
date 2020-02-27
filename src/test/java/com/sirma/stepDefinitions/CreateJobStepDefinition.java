@@ -7,6 +7,7 @@ import io.codearte.jfairy.Fairy;
 import io.codearte.jfairy.producer.company.Company;
 import io.codearte.jfairy.producer.person.Address;
 import io.codearte.jfairy.producer.person.Person;
+import junit.framework.Assert;
 
 import java.util.Properties;
 
@@ -14,15 +15,19 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import com.sirma.pageObjects.CandidatesPage;
 import com.sirma.pageObjects.CreateJobPage;
 import com.sirma.pageObjects.CreateJob_AddNewLocationPage;
+import com.sirma.pageObjects.JobsPage;
 import com.sirma.pageObjects.LogInPage;
 import com.sirma.resources.Base;
 
@@ -33,13 +38,14 @@ public class CreateJobStepDefinition extends Base {
 	private static Logger log = LogManager.getLogger(CreateJobStepDefinition.class.getName());
 	CreateJobPage cjp = new CreateJobPage(driver);
 	WebDriverWait wait = new WebDriverWait(driver, 20000);
-	
+	String jobTitle = null;
 
 
     
     @And("^Fill in Title (.+)$")
     public void fill_in_title(String title) throws Throwable {
     	cjp.gettitleTextField().sendKeys(title);
+    	jobTitle = title;
     }
 
     @And("^FIll in Company (.+)$")
@@ -109,9 +115,14 @@ public class CreateJobStepDefinition extends Base {
     
     @And("^Click button AddNewEmploymentType$")
     public void click_button_addnewemploymenttype() throws Throwable {
-		driver.switchTo().defaultContent();
+		/*driver.switchTo().defaultContent();
 		WebElement addNew_EmploymentType = cjp.getAddNewEmploymentTypeButton();
-		addNew_EmploymentType.click();
+		addNew_EmploymentType.click();*/
+    	WebElement element = cjp.getAddNewEmploymentTypeButton();
+    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    	Thread.sleep(500); 
+    	element.click();
+
     }
  
     @And("^Fill in Create Location$")
@@ -132,4 +143,13 @@ public class CreateJobStepDefinition extends Base {
 		cjp.getSave_EmploymentType().click();
     }
 
+    @And("^Validate the job was created$")
+    public void validate_the_job_was_created() throws Throwable {
+    	//JobsPage jp = new JobsPage(driver);
+		Thread.sleep(3000);
+		//WebElement nameFilter = cp.getNameInputFilter();
+		//nameFilter.sendKeys(nameCandidate);
+		WebElement result = driver.findElement(By.xpath(("//h1[.='" + jobTitle + "']")));
+		Assert.assertTrue(result.isDisplayed());
+    }
 }
