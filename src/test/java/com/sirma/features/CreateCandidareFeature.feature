@@ -1,3 +1,4 @@
+@Candidate
 Feature: Create Candidate
 
 @Candidate1
@@ -84,24 +85,26 @@ And Fill in user and pass
 And Click on Candidates menu
 And Click on Add Candidates button, Add Manually
 And Upload photo
-Then Validate file upload
+Then Validate picture upload
 And End test
 
 @Candidate7
-Scenario: Create Candidate Manually - add social links TO DO
+Scenario: Create Candidate Manually - add social links 
 Given Initialize browser 
 When Navigate to URL home page
 And Fill in user and pass
 And Click on Candidates menu
 And Click on Add Candidates button, Add Manually
+And End test
 
 @Candidate8
-Scenario: Create Candidate Manually - add links TO DO
+Scenario: Create Candidate Manually - add links 
 Given Initialize browser 
 When Navigate to URL home page
 And Fill in user and pass
 And Click on Candidates menu
 And Click on Add Candidates button, Add Manually
+And End test
 
 @Candidate9
 Scenario: Create Candidate validate upload CV/Resume
@@ -136,3 +139,4 @@ And Click on Add Candidates button, Add Manually
 And Upload photo
 And Validate picture upload
 And End test
+

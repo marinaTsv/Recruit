@@ -113,6 +113,7 @@ public class CreateCandidateStepDefinition extends Base {
 	public void validate_the_candidate_was_created() throws Throwable {
 		CandidatesPage cp = new CandidatesPage(driver);
 		Thread.sleep(3000);
+		//wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='cnadidate-grid-align row']/div/div[1]/div/div[2]/table/thead/tr/th[1]/input")));
 		WebElement nameFilter = cp.getNameInputFilter();
 		nameFilter.sendKeys(nameCandidate);
 		WebElement result = driver.findElement(By.xpath(("//p[contains(@title, '" + nameCandidate + "')]")));

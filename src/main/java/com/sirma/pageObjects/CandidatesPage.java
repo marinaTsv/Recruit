@@ -14,7 +14,7 @@ public class CandidatesPage {
 	
 	//Candidates
 	private By addCandidateButton  = By.xpath("//div[@class='css-bg1rzq-control']");
-	private By nameInputFilter = By.xpath(("//div[@class='cnadidate-grid-align row']/div/div[1]/div/div[2]/table/thead/tr/th[1]/input"));
+	private By nameInputFilter = By.xpath(("//thead[@class='p-datatable-thead']/tr/th/input"));
 	
 	//Candidates
 	public WebElement getAddCandidateButton() {

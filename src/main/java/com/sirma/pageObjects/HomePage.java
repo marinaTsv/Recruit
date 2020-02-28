@@ -16,17 +16,33 @@ public class HomePage {
 	private By language_button  = By.xpath("");
 	private By mylogo  = By.xpath("");
 	private By logged_user_button  = By.xpath("");
+	
 
 	//left side navbar
 	private By dashboard  = By.xpath("/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div/ul/li[1]/a");
 	private By tasks  = By.xpath("/html/body/div/div/div[2]/div[1]/div[1]/div/div/ul/li[2]/a");
 	private By jobs  = By.xpath("//a[@data-flag='job']");
 	private By candidates  = By.xpath("//a[@data-flag='candidates']");//("/html/body/div[1]/div/div[2]/div[1]/div[1]/div/div/ul/li[4]/a");
-	private By settings  = By.xpath("/html/body/div/div/div[2]/div[1]/div[1]/div/div/ul/li[5]/a");
+	private By settingsButton  = By.xpath("//a[@data-flag='settings']");
 	
-	
+	//Settings sub-menu
+	private By companies  = By.xpath("//span[.='Companies']");
+	private By departments  = By.xpath("");
+	private By locations  = By.xpath("");
+	private By disqualifyReasons  = By.xpath("");
+	private By pipeline  = By.xpath("");
+	private By sources  = By.xpath("");
+	private By employmentTypes  = By.xpath("");
+	private By teamMembers  = By.xpath("");
+	private By globalSettings  = By.xpath("");
 
-	//upper navbar
+	
+	public WebElement getCompanies() {
+		return driver.findElement(companies);
+	}
+	public WebElement getSettingsButton() {
+		return driver.findElement(settingsButton);
+	}
 	public WebElement getMenu_button() {
 		return driver.findElement(menu_button);
 	}
@@ -53,9 +69,4 @@ public class HomePage {
 	public WebElement getCandidates() {
 		return driver.findElement(candidates);
 	}
-	public WebElement getSettings() {
-		return driver.findElement(settings);
-	}
-	
-
 }

@@ -1,7 +1,12 @@
 Feature: Log In with data.property credentials
 
-@Test
-Scenario: Test Property 
+@CandidateTest
+Scenario: Create Candidate Manually validate Picture upload 
 Given Initialize browser 
 When Navigate to URL home page
-And Fill in user and pass2
+And Fill in user and pass
+And Click on Candidates menu
+And Click on Add Candidates button, Add Manually
+And Upload photo
+And Validate picture upload
+And End test
