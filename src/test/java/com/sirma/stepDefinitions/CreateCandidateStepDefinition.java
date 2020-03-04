@@ -78,7 +78,6 @@ public class CreateCandidateStepDefinition extends Base {
 		source.sendKeys("J");
 		Thread.sleep(2000);
 		source.sendKeys(Keys.ENTER);
-		;
 	}
 
 	@And("^Click button Save$")
