@@ -90,12 +90,12 @@ public class CreateCompanyStepDefinition extends Base {
 		contactPerson.sendKeys(Keys.ENTER);
 	}
 
-	@And("^Upload file companyLogo$")
+	/*@And("^Upload file companyLogo$")
 	public void upload_file_companyLogo() throws Throwable {
 		Thread.sleep(3000);
 		propertiesFileRead();
 		createCompanyPage.getCompanyLogoUpload().sendKeys(prop.getProperty("companyLogo"));
-	}
+	}*/
 
 	@And("^Click button SaveCompany$")
 	public void click_button_SaveCompany() throws Throwable {

@@ -14,7 +14,10 @@ public class CreateDepartmentPage {
 	
 	//Department
 	private By createDepartmentButton  = By.xpath("//div[@class='department-crt-btn']");
-		
+	private By departmentNameFilterInput = By.xpath("//thead[@class='p-datatable-thead']/tr/th/input");
+	private By dropdownActive = By.xpath(("//option[@value='Active']"));///("//td[@class='']/select"));
+	private By dropdownInactive = By.xpath(("//option[@value='Inactive']"));
+	private By dropdown = By.xpath("//td[@class='']/select");
 	//Create Department
 	private By name  = By.xpath("//input[@id='name']");
 	private By assitantDepHead  = By.xpath("//div[@id='assist']/div/div/div[2]/div/input");
@@ -22,10 +25,18 @@ public class CreateDepartmentPage {
 	private By company  = By.xpath("//div[@id='company']/div/div/div[2]/div/input");
 	private By activeRadiobutton  = By.xpath("//*[@id='activeRadio']");
 	private By inactiveRadiobutton  = By.xpath("//*[@id='inactiveRadio']");
-	private By saveDepartment  = By.xpath("button//[@id='saveBtn']");
-	private By backDepartment  = By.xpath("button//[@id='cancelBtn']");
+	private By saveDepartment  = By.xpath("//button[@id='saveBtn']");
+	private By backDepartment  = By.xpath("//button[@id='cancelBtn']");
 
-
+	public WebElement getDropdownInactive() {
+		return driver.findElement(dropdownInactive);
+	}
+	public WebElement getDropdownActive() {
+		return driver.findElement(dropdownActive);
+	}
+	public WebElement getDepartmentNameFilterInput() {
+		return driver.findElement(departmentNameFilterInput);
+	}
 	public WebElement getSaveDepartment() {
 		return driver.findElement(saveDepartment);
 	}

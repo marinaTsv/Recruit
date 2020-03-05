@@ -14,7 +14,6 @@ And FIll in Company <company>
 And FIll in Department <department>
 And FIll in Location <location>
 And FIll in JobDescription <jobDescription>
-
 And FIll in EmploymentType <employmentType>
 And Click on button Save
 And Validate the job was created
@@ -23,8 +22,8 @@ And End test
 
 
 Examples:
-|title	|company	|department		|location		|jobDescription					|jobRequirements				|employmentType	|
-|QA		|s			|s				|s				|Vamos con una apuesta para esta|Vamos con una apuesta para esta!|s				|
+|title	|company	|department		|location		|jobDescription					|employmentType	|
+|QA		|S&G		|s				|s				|Vamos con una apuesta para esta|s				|
 
 
 @Create_Job2
@@ -41,15 +40,14 @@ And FIll in Department <department>
 And Click button AddNewLocation
 And Fill in Create Location
 And FIll in JobDescription <jobDescription>
-
 And FIll in EmploymentType <employmentType>
 And Click on button Save
 And Validate the job was created
 And End test
 
 Examples:
-|title	|company	|department		|location		|jobDescription					|jobRequirements				|employmentType	|
-|QA		|s			|s				|s				|Vamos con una apuesta para esta|Vamos con una apuesta para esta!|s				|
+|title	|company	|department		|location		|jobDescription					|employmentType	|
+|QA		|S&G		|s				|s				|Vamos con una apuesta para esta|s				|
 
 
 @Create_Job3
@@ -73,5 +71,5 @@ And End test
 
 
 Examples:
-|title	|company	|department		|location		|jobDescription					|jobRequirements				|employmentType	|
-|QA		|s			|s				|s				|Vamos con una apuesta para esta|Vamos con una apuesta para esta!|s				|
+|title	|company	|department		|location		|jobDescription					|employmentType	|
+|QA		|S&G		|s				|s				|Vamos con una apuesta para esta|s				|

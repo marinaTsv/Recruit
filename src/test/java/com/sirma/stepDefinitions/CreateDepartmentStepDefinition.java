@@ -21,11 +21,14 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.sirma.pageObjects.AddCandidateManuallyPage;
 import com.sirma.pageObjects.CandidatesPage;
 import com.sirma.pageObjects.CreateCompanyPage;
+import com.sirma.pageObjects.CreateDepartmentPage;
 import com.sirma.pageObjects.HomePage;
 import com.sirma.pageObjects.LogInPage;
 import com.sirma.resources.Base;
@@ -35,50 +38,111 @@ public class CreateDepartmentStepDefinition extends Base {
 
 	private static Logger log = LogManager.getLogger(CreateDepartmentStepDefinition.class.getName());
 	WebDriverWait wait = new WebDriverWait(driver, 10000);
-	CreateCompanyPage createCompanyPage = new CreateCompanyPage(driver);
+	CreateDepartmentPage createDepartmentPage = new CreateDepartmentPage(driver);
 	Fairy fairy = Fairy.create();
 	Company company = fairy.company();
 	Person person = fairy.person();
-	String companyName = null;
+	String departmentName = null;
 	HomePage hp = new HomePage(driver);
 	
-	   @Then("^Validate the Department was not created$")
-	    public void validate_the_department_was_not_created() throws Throwable {
-	        throw new PendingException();
-	    }
+
 
 	    @And("^Click on Department submenu$")
 	    public void click_on_department_submenu() throws Throwable {
-	        throw new PendingException();
+	        hp.getDepartments().click();
 	    }
 
 	    @And("^Click on Create Department button$")
 	    public void click_on_create_department_button() throws Throwable {
-	        throw new PendingException();
+	    	wait.until(ExpectedConditions
+					.invisibilityOfElementLocated(By.xpath("//div[@class='p-component-overlay p-dialog-mask']")));
+	    	createDepartmentPage.getCreateDepartmentButton().click();
 	    }
 
 	    @And("^Fill in Departmentname$")
 	    public void fill_in_departmentname() throws Throwable {
-	        throw new PendingException();
+			departmentName = company.name();
+			createDepartmentPage.getName().sendKeys(departmentName);
 	    }
 
 	    @And("^Select AssistantDepartmentHead$")
 	    public void select_assistantdepartmenthead() throws Throwable {
-	        throw new PendingException();
+			WebElement assistantDepartmentHead = createDepartmentPage.getAssitantDepHead();
+			assistantDepartmentHead.sendKeys("m");
+			Thread.sleep(2000);
+			assistantDepartmentHead.sendKeys(Keys.ENTER);
 	    }
 
 	    @And("^Select DepartmentHead$")
 	    public void select_departmenthead() throws Throwable {
-	        throw new PendingException();
+			WebElement departmentHead = createDepartmentPage.getDepartmentHead();
+			departmentHead.sendKeys("m");
+			Thread.sleep(2000);
+			departmentHead.sendKeys(Keys.ENTER);
 	    }
 
 	    @And("^Select Company$")
 	    public void select_company() throws Throwable {
-	        throw new PendingException();
+			WebElement company = createDepartmentPage.getCompany();
+			company.sendKeys("S&G");
+			Thread.sleep(2000);
+			company.sendKeys(Keys.ENTER);
 	    }
 
 	    @And("^Click button BackDepartment$")
 	    public void click_button_backdepartment() throws Throwable {
-	        throw new PendingException();
+	    	createDepartmentPage.getBackDepartment().click();
+	    }
+	    
+	    @Then("^Validate the Department was created$")
+	    public void validate_the_department_was_created() throws Throwable {
+			Thread.sleep(3000);
+			WebElement departmentNameFilter = createDepartmentPage.getDepartmentNameFilterInput();
+			departmentNameFilter.sendKeys(departmentName);
+			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
+			Assert.assertFalse(result.isEmpty());
+	    }
+	    
+		@Then("^Validate the Department was not created$")
+		public void validate_the_department_was_not_created() throws Throwable {
+			Thread.sleep(3000);
+			WebElement departmentNameFilter = createDepartmentPage.getDepartmentNameFilterInput();
+			departmentNameFilter.sendKeys(departmentName);
+			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
+			Assert.assertTrue(result.isEmpty());
+		    }
+
+	    @And("^Click button SaveDepartment$")
+	    public void click_button_savedepartment() throws Throwable {
+	    	createDepartmentPage.getSaveDepartment().click();
+	    }
+	    
+	    @Then("^Validate that SaveDepartment button is enabled$")
+	    public void validate_that_savedepartment_button_is_enabled() throws Throwable {
+	        Assert.assertTrue(createDepartmentPage.getSaveDepartment().isEnabled());
+	    }
+	    
+	    @Then("^Validate the Department was created as Active$")
+	    public void validate_the_department_was_created_as_active() throws Throwable {
+			Thread.sleep(3000);
+			WebElement departmentNameFilter = createDepartmentPage.getDepartmentNameFilterInput();
+			departmentNameFilter.sendKeys(departmentName);
+			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
+			Assert.assertTrue(createDepartmentPage.getDropdownInactive().isDisplayed());
+			
+		/*	WebElement dropdownAdult = driver.findElement(By.cssSelector("#ctl00_mainContent_ddl_Adult"));
+			Select sDropdown = new Select(dropdownAdult); //the Select argument is the web element
+			sDropdown.selectByValue("2").*/
+	    }
+	    
+	    @Then("^Validate the Department was created as Inctive$")
+	    public void validate_the_department_was_created_as_inctive() throws Throwable {
+			Thread.sleep(3000);
+			WebElement departmentNameFilter = createDepartmentPage.getDepartmentNameFilterInput();
+			departmentNameFilter.sendKeys(departmentName);
+			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
+			WebElement dropdownAdult = driver.findElement(By.cssSelector("#ctl00_mainContent_ddl_Adult"));
+			//Select activeDropdown    = new Select(createDepartmentPage.getDropdownActive()); 
+			Assert.assertTrue(createDepartmentPage.getDropdownInactive().isDisplayed()  );
 	    }
 }
