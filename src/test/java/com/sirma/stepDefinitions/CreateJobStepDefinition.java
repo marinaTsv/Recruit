@@ -110,7 +110,8 @@ public class CreateJobStepDefinition extends Base {
     
     @And("^Click button AddNewLocation$")
     public void click_button_addnewlocation() throws Throwable {
-		cjp.getAddNewLocationButton().click();
+    	Thread.sleep(2000);
+    	cjp.getAddNewLocationButton().click();
     }
     
     @And("^Click button AddNewEmploymentType$")

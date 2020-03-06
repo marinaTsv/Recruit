@@ -127,7 +127,7 @@ public class CreateDepartmentStepDefinition extends Base {
 			Thread.sleep(3000);
 			WebElement departmentNameFilter = createDepartmentPage.getDepartmentNameFilterInput();
 			departmentNameFilter.sendKeys(departmentName);
-			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
+			//List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
 			Assert.assertTrue(createDepartmentPage.getDropdownInactive().isDisplayed());
 			
 		/*	WebElement dropdownAdult = driver.findElement(By.cssSelector("#ctl00_mainContent_ddl_Adult"));
@@ -140,9 +140,11 @@ public class CreateDepartmentStepDefinition extends Base {
 			Thread.sleep(3000);
 			WebElement departmentNameFilter = createDepartmentPage.getDepartmentNameFilterInput();
 			departmentNameFilter.sendKeys(departmentName);
-			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
-			WebElement dropdownAdult = driver.findElement(By.cssSelector("#ctl00_mainContent_ddl_Adult"));
-			//Select activeDropdown    = new Select(createDepartmentPage.getDropdownActive()); 
 			Assert.assertTrue(createDepartmentPage.getDropdownInactive().isDisplayed()  );
+	    }
+	    
+	    @And("^Select InactiveRadiobutton$")
+	    public void select_inactiveradiobutton() throws Throwable {
+	    	createDepartmentPage.getInactiveRadiobutton().click();
 	    }
 }

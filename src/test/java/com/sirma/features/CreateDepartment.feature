@@ -60,7 +60,7 @@ And Select DepartmentHead
 And Select Company
 And Click button SaveDepartment
 Then Validate the Department was created as Active
-
+And End test
 
 @Department5
 Scenario: Validate Create Inactive Department
@@ -74,6 +74,7 @@ And Fill in Departmentname
 And Select AssistantDepartmentHead
 And Select DepartmentHead
 And Select Company
+And Select InactiveRadiobutton
 And Click button SaveDepartment
 Then Validate the Department was created as Inctive
 And End test

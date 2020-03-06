@@ -28,7 +28,7 @@ public class HomePage {
 	//Settings sub-menu
 	private By companies  = By.xpath("//span[.='Companies']");
 	private By departments  = By.xpath("//a[@href='/app/settings/departments']");
-	private By locations  = By.xpath("");
+	private By locations  = By.xpath("//a[@href='/app/settings/locations']");
 	private By disqualifyReasons  = By.xpath("");
 	private By pipeline  = By.xpath("");
 	private By sources  = By.xpath("");
@@ -36,6 +36,9 @@ public class HomePage {
 	private By teamMembers  = By.xpath("");
 	private By globalSettings  = By.xpath("");
 
+	public WebElement getLocations() {
+		return driver.findElement(locations);
+	}
 	public WebElement getDepartments() {
 		return driver.findElement(departments);
 	}
