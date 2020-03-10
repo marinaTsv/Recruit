@@ -24,12 +24,12 @@ public class CreateJobPage {
 	private By employmentType = By.xpath("//div[@id='employmentType']/div/div/div[2]/div/input");
 	private By saveButton = By.xpath("//*[@id='saveJob']");
 	
-//NonRequired	
+//NonRequired/Labels	
 	private By jobPosting  = By.xpath("//li[@class='p-unselectable-text p-tabview-selected p-highlight']\")");
 	private By titleLabel  = By.xpath("");
 	private By companyLabel  = By.xpath("");
 	private By departmentLabel  = By.xpath("");
-	private By locationLabel  = By.xpath("/html/body/div[1]/div/div[2]/main/div/div[2]/div[1]/div[1]/div[2]/div/div/div/form[1]/div[2]/div[1]/label");
+	private By locationLabel  = By.xpath("//span[.='Location']");
 	private By jobDescriptionLabel  = By.xpath("");
 	private By jobRequirementsLabel  = By.xpath("");	
 
@@ -51,6 +51,9 @@ public class CreateJobPage {
 	private By save  = By.xpath("//button[@class='btn btn-md btn-primary rght-btn']");
 
 	
+	public WebElement getLocationLabel() {
+		return driver.findElement(locationLabel);
+	}
 	public WebElement getName() {
 		return driver.findElement(name);
 	}

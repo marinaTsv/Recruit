@@ -14,6 +14,8 @@ public class CreateLocationPage {
 	
 	//Location
 	private By createLocationButton = By.xpath("//*[@id='createLocBtn']");
+	private By locationNameFilter = By.xpath(("//thead[@class='p-datatable-thead']/tr/th/input"));
+	
 	
 	//Create Location
 	private By locationName  = By.xpath("//*[@id='name']");
@@ -32,6 +34,9 @@ public class CreateLocationPage {
 	private By saveLocation  = By.xpath("//*[@id='saveBtn']");
 	private By backLocation  = By.xpath("//*[@id='cancelBtn']");
 	
+	public WebElement getLocationNameFilter() {
+		return driver.findElement(locationNameFilter);
+	}
 	public WebElement getCreateLocationButton() {
 		return driver.findElement(createLocationButton);
 	}

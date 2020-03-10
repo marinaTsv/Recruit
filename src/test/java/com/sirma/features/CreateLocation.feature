@@ -37,7 +37,7 @@ And Select Company_inLocation
 And Fill In Country
 And Fill In Address
 And Click button BackLocation
-Then Validate the Department was not created
+Then Validate the Location was not created
 And End test
 
 @Location3
@@ -52,7 +52,7 @@ And Fill in LocationName
 And Select Company_inLocation
 And Fill In Country
 And Fill In Address
-Then Validate that SaveDepartment button is enabled
+Then Validate that SaveLocation button is enabled
 And End test
 
 @Location4

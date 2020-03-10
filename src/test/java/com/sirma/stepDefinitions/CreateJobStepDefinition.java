@@ -1,15 +1,11 @@
 package com.sirma.stepDefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.junit.Cucumber;
 import io.codearte.jfairy.Fairy;
 import io.codearte.jfairy.producer.company.Company;
-import io.codearte.jfairy.producer.person.Address;
 import io.codearte.jfairy.producer.person.Person;
 import junit.framework.Assert;
-
-import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,29 +15,19 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-
-import com.sirma.pageObjects.CandidatesPage;
 import com.sirma.pageObjects.CreateJobPage;
-import com.sirma.pageObjects.CreateJob_AddNewLocationPage;
-import com.sirma.pageObjects.JobsPage;
-import com.sirma.pageObjects.LogInPage;
+import org.apache.logging.log4j.*;
 import com.sirma.resources.Base;
 
 @RunWith(Cucumber.class)
-
 
 public class CreateJobStepDefinition extends Base {
 	private static Logger log = LogManager.getLogger(CreateJobStepDefinition.class.getName());
 	CreateJobPage cjp = new CreateJobPage(driver);
 	WebDriverWait wait = new WebDriverWait(driver, 20000);
 	String jobTitle = null;
-
-
-    
+   
     @And("^Fill in Title (.+)$")
     public void fill_in_title(String title) throws Throwable {
     	cjp.gettitleTextField().sendKeys(title);
@@ -67,7 +53,7 @@ public class CreateJobStepDefinition extends Base {
 
     @And("^FIll in Location (.+)$")
     public void fill_in_location(String location) throws Throwable {
-		WebElement locationDropDown = cjp.getLocationDropdown();
+    	WebElement locationDropDown = cjp.getLocationDropdown();
 		locationDropDown.sendKeys(location);
 		Thread.sleep(2000);
 		locationDropDown.sendKeys(Keys.ENTER);
@@ -110,8 +96,10 @@ public class CreateJobStepDefinition extends Base {
     
     @And("^Click button AddNewLocation$")
     public void click_button_addnewlocation() throws Throwable {
+    	cjp.getLocationLabel().click();
     	Thread.sleep(2000);
     	cjp.getAddNewLocationButton().click();
+    	//<div id="react-select-5-option-2" class="css-fk865s-option"> obscures
     }
     
     @And("^Click button AddNewEmploymentType$")
@@ -152,5 +140,6 @@ public class CreateJobStepDefinition extends Base {
 		//nameFilter.sendKeys(nameCandidate);
 		WebElement result = driver.findElement(By.xpath(("//h1[.='" + jobTitle + "']")));
 		Assert.assertTrue(result.isDisplayed());
+		log.info("Job was created");
     }
 }

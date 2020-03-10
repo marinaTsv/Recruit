@@ -53,7 +53,20 @@ public class CreateLocationStepDefinition extends Base {
 	
 	   @Then("^Validate the location was created$")
 	    public void validate_the_location_was_created() throws Throwable {
-	        throw new PendingException();
+			Thread.sleep(3000);
+			WebElement locationNameFilter = createLocationPage.getLocationNameFilter();
+			locationNameFilter.sendKeys(locationName);
+			WebElement result = driver.findElement(By.xpath(("//a[.='" + locationName + "']")));
+			Assert.assertTrue(result.isDisplayed());
+	    }
+	   
+	    @Then("^Validate the Location was not created$")
+	    public void validate_the_location_was_not_created() throws Throwable {
+			Thread.sleep(3000);
+			WebElement locationNameFilter = createLocationPage.getLocationNameFilter();
+			locationNameFilter.sendKeys(locationName);
+			WebElement result = driver.findElement(By.xpath(("//a[.='" + locationName + "']")));
+			Assert.assertFalse(result.isDisplayed());
 	    }
 
 	    @And("^Click on Locations submenu$")
@@ -139,10 +152,9 @@ public class CreateLocationStepDefinition extends Base {
 	    @And("^Fill In PhoneNumber$")
 	    public void fill_in_phonenumber() throws Throwable {
 	    	WebElement phoneNumber_InLocationPage = createLocationPage.getPhoneNumber();
-	    	String phone = person.telephoneNumber();
-	    	phoneNumber_InLocationPage.sendKeys(phone);
-			Thread.sleep(2000);
-			phoneNumber_InLocationPage.sendKeys(Keys.ENTER);
+	    	//String phone = person.telephoneNumber();
+	    	String phoneWithDash = person.telephoneNumber();
+	    	phoneNumber_InLocationPage.sendKeys(phoneWithDash.replace("-", ""));
 	    }
 
 	    @And("^Fill In Email$")
@@ -165,8 +177,11 @@ public class CreateLocationStepDefinition extends Base {
 
 	    @And("^Click button SaveLocation$")
 	    public void click_button_savelocation() throws Throwable {
-	        throw new PendingException();
+	    	createLocationPage.getSaveLocation().click();
 	    }
-
+	    @And("^Click button BackLocation$")
+	    public void click_button_backlocation() throws Throwable {
+	    	createLocationPage.getBackLocation().click();
+	    }
 
 }
