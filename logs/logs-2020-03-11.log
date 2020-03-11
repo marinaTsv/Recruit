@@ -1,0 +1,5 @@
+15:23:11.132 [main] INFO  com.sirma.stepDefinitions.CreateDepartmentStepDefinition - The department was created Inactive
+15:28:12.812 [main] INFO  com.sirma.stepDefinitions.CreateDepartmentStepDefinition - The option is: Active
+15:28:12.815 [main] INFO  com.sirma.stepDefinitions.CreateDepartmentStepDefinition - The department was created Inactive
+15:36:47.041 [main] INFO  com.sirma.stepDefinitions.CreateDepartmentStepDefinition - The option is: Active
+15:36:47.044 [main] INFO  com.sirma.stepDefinitions.CreateDepartmentStepDefinition - The department was created Inactive

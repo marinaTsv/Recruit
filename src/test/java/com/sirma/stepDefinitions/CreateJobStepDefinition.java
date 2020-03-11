@@ -104,14 +104,10 @@ public class CreateJobStepDefinition extends Base {
     
     @And("^Click button AddNewEmploymentType$")
     public void click_button_addnewemploymenttype() throws Throwable {
-		/*driver.switchTo().defaultContent();
-		WebElement addNew_EmploymentType = cjp.getAddNewEmploymentTypeButton();
-		addNew_EmploymentType.click();*/
     	WebElement element = cjp.getAddNewEmploymentTypeButton();
     	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     	Thread.sleep(500); 
     	element.click();
-
     }
  
     @And("^Fill in Create Location$")

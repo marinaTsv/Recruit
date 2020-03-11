@@ -1,6 +1,7 @@
 package com.sirma.stepDefinitions;
 
 import cucumber.api.PendingException;
+import org.openqa.selenium.support.ui.*;
 
 import java.io.FileInputStream;
 import java.util.List;
@@ -101,6 +102,7 @@ public class CreateDepartmentStepDefinition extends Base {
 			departmentNameFilter.sendKeys(departmentName);
 			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
 			Assert.assertFalse(result.isEmpty());
+			log.info("Department was created");
 	    }
 	    
 		@Then("^Validate the Department was not created$")
@@ -110,6 +112,7 @@ public class CreateDepartmentStepDefinition extends Base {
 			departmentNameFilter.sendKeys(departmentName);
 			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
 			Assert.assertTrue(result.isEmpty());
+			log.info("Department was not created");
 		    }
 
 	    @And("^Click button SaveDepartment$")
@@ -120,27 +123,35 @@ public class CreateDepartmentStepDefinition extends Base {
 	    @Then("^Validate that SaveDepartment button is enabled$")
 	    public void validate_that_savedepartment_button_is_enabled() throws Throwable {
 	        Assert.assertTrue(createDepartmentPage.getSaveDepartment().isEnabled());
+	        log.info("SaveDepartment button is enabled");
 	    }
 	    
 	    @Then("^Validate the Department was created as Active$")
 	    public void validate_the_department_was_created_as_active() throws Throwable {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			WebElement departmentNameFilter = createDepartmentPage.getDepartmentNameFilterInput();
 			departmentNameFilter.sendKeys(departmentName);
-			//List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + departmentName + "']")));
-			Assert.assertTrue(createDepartmentPage.getDropdownInactive().isDisplayed());
-			
-		/*	WebElement dropdownAdult = driver.findElement(By.cssSelector("#ctl00_mainContent_ddl_Adult"));
-			Select sDropdown = new Select(dropdownAdult); //the Select argument is the web element
-			sDropdown.selectByValue("2").*/
+		    WebElement dropdownActive = createDepartmentPage.getdropdownActive();
+			Select dropdown = new Select(dropdownActive); 						
+			WebElement option = dropdown.getFirstSelectedOption();
+			String selectedOption = option.getText();			
+			Assert.assertTrue(selectedOption.equals("Active"));
+			log.info("The department was created Active");
 	    }
 	    
 	    @Then("^Validate the Department was created as Inctive$")
 	    public void validate_the_department_was_created_as_inctive() throws Throwable {
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 			WebElement departmentNameFilter = createDepartmentPage.getDepartmentNameFilterInput();
 			departmentNameFilter.sendKeys(departmentName);
-			Assert.assertTrue(createDepartmentPage.getDropdownInactive().isDisplayed()  );
+		    WebElement dropdownActive = createDepartmentPage.getdropdownActive();
+			Select dropdown = new Select(dropdownActive); 						
+			WebElement option = dropdown.getFirstSelectedOption();
+			String selectedOption = option.getText();	
+			log.info("The option is: " + selectedOption);
+			System.out.print("The option is: " + selectedOption);
+			Assert.assertTrue(selectedOption.equals("Active"));
+			log.info("The department was created Inactive");
 	    }
 	    
 	    @And("^Select InactiveRadiobutton$")

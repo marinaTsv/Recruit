@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.sirma.recruit.AppTest"/>
+      <class name="com.sirma.recruit.CreateCandidateManuallyWithFileUploadTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

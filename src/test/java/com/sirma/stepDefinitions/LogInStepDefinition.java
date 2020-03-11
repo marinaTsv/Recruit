@@ -66,11 +66,13 @@ public class LogInStepDefinition extends Base {
 	public void dashboard_opens() throws Throwable {
 		List<WebElement> dashboard = driver.findElements(By.xpath("//a[@data-flag='candidates']"));
 		Assert.assertFalse(dashboard.isEmpty());
+		log.info("Dashboard opens");
 	}
 
 	@Then("^Dashboard does not open$")
 	public void dashboard_does_not_open() throws Throwable {
 		List<WebElement> dashboard = driver.findElements(By.xpath("//a[@data-flag='candidates']"));
 		Assert.assertTrue(dashboard.isEmpty());
+		log.info("Dashboard does not open");
 	}
 }

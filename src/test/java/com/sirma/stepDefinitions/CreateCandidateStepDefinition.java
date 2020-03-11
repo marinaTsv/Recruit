@@ -75,6 +75,7 @@ public class CreateCandidateStepDefinition extends Base {
 	@And("^Fill in Source$")
 	public void fill_in_source() throws Throwable {
 		WebElement source = acp.getSource();
+		wait.until(ExpectedConditions.elementToBeClickable(source));
 		source.sendKeys("J");
 		Thread.sleep(2000);
 		source.sendKeys(Keys.ENTER);
@@ -117,6 +118,7 @@ public class CreateCandidateStepDefinition extends Base {
 		nameFilter.sendKeys(nameCandidate);
 		WebElement result = driver.findElement(By.xpath(("//p[contains(@title, '" + nameCandidate + "')]")));
 		Assert.assertTrue(result.isDisplayed());
+		log.info("Candidate was created");
 	}
 
 	@Then("^Validate the Candidate was not created$")
@@ -127,6 +129,7 @@ public class CreateCandidateStepDefinition extends Base {
 		nameFilter.sendKeys(nameCandidate);
 		List<WebElement> result = driver.findElements(By.xpath(("//p[contains(@title, '" + nameCandidate + "')]")));
 		Assert.assertTrue(result.isEmpty());
+		log.info("Candidate was not created");
 	}
 	
 	@When("^Upload CV_Resume \"([^\"]*)\"$")
@@ -141,18 +144,21 @@ public class CreateCandidateStepDefinition extends Base {
     public void validate_file_upload() throws Throwable {
    	 List<WebElement> uploadedFile = driver.findElements(By.xpath("//span[.='Upload File']"));
    	 Assert.assertTrue(uploadedFile.isEmpty());
+   	log.info("File was uploaded");
     }
     
     @And("^Validate file removal$")
     public void validate_file_removal() throws Throwable {
       	 List<WebElement> uploadedFile = driver.findElements(By.xpath("//span[.='Upload File']"));
        	 Assert.assertFalse(uploadedFile.isEmpty());
+       	log.info("File was removed");
     }
     
     @And("^Validate picture upload$")
     public void validate_picture_upload() throws Throwable {
      	 List<WebElement> uploadedFile = driver.findElements(By.xpath("//img[@class='candidate-avatar']"));
        	 Assert.assertFalse(uploadedFile.isEmpty());
+       	log.info("Picture was uploaded");
     }
 
 }

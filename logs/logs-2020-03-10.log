@@ -1,0 +1,5 @@
+16:59:05.876 [main] INFO  com.sirma.stepDefinitions.CreateCandidateStepDefinition - Candidate was created
+16:59:06.873 [main] DEBUG com.sirma.stepDefinitions.AGeneralStepDefinition - Driver closed
+17:00:00.976 [main] INFO  com.sirma.stepDefinitions.CreateCandidateStepDefinition - Candidate was created
+17:00:02.087 [main] DEBUG com.sirma.stepDefinitions.AGeneralStepDefinition - Driver closed
+17:03:51.506 [main] INFO  com.sirma.stepDefinitions.CreateCandidateStepDefinition - Candidate was created

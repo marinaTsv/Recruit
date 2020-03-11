@@ -58,16 +58,18 @@ public class CreateLocationStepDefinition extends Base {
 			locationNameFilter.sendKeys(locationName);
 			WebElement result = driver.findElement(By.xpath(("//a[.='" + locationName + "']")));
 			Assert.assertTrue(result.isDisplayed());
+			log.info("Location was created");
 	    }
 	   
 	    @Then("^Validate the Location was not created$")
 	    public void validate_the_location_was_not_created() throws Throwable {
 			Thread.sleep(3000);
 			WebElement locationNameFilter = createLocationPage.getLocationNameFilter();
-			locationNameFilter.sendKeys(locationName);
-			WebElement result = driver.findElement(By.xpath(("//a[.='" + locationName + "']")));
-			Assert.assertFalse(result.isDisplayed());
-	    }
+			locationNameFilter.sendKeys(locationName);	
+			List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + locationName + "']")));
+			Assert.assertTrue(result.isEmpty());
+			log.info("Location was not created");
+		    }
 
 	    @And("^Click on Locations submenu$")
 	    public void click_on_locations_submenu() throws Throwable {
@@ -83,8 +85,10 @@ public class CreateLocationStepDefinition extends Base {
 
 	    @And("^Fill in LocationName$")
 	    public void fill_in_locationname() throws Throwable {
-			locationName = company.name();
+			String locationNameWithDot = company.name();
+			locationName = locationNameWithDot.replace(".", "");
 			createLocationPage.getLocationName().sendKeys(locationName);
+			
 	    }
 
 	    @And("^Select Company_inLocation$")
@@ -182,6 +186,23 @@ public class CreateLocationStepDefinition extends Base {
 	    @And("^Click button BackLocation$")
 	    public void click_button_backlocation() throws Throwable {
 	    	createLocationPage.getBackLocation().click();
+	    }
+	    
+	    @Then("^Validate that SaveLocation button is enabled$")
+	    public void validate_that_savelocation_button_is_enabled() throws Throwable {
+	    	 Assert.assertTrue(createLocationPage.getSaveLocation().isEnabled());
+		        log.info("SaveLocation button is enabled");
+	    }
+	    
+	    @And("^Click Inactive_Location radiobutton$")
+	    public void click_inactivelocation_radiobutton() throws Throwable {
+	    	createLocationPage.getInactiveRadiobutton().click();
+	    }
+	    
+	    @Then("^Validate the Location was created as Active$")
+	    public void validate_the_location_was_created_as_active() throws Throwable {
+
+	    
 	    }
 
 }

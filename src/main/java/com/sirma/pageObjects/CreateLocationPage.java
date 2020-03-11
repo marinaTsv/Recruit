@@ -29,11 +29,19 @@ public class CreateLocationPage {
 	private By phoneNumber  = By.xpath("//*[@id='phoneNumber']");
 	private By email  = By.xpath("//*[@id='email']");
 	private By notes  = By.xpath("//*[@id='notes']");
-	private By active  = By.xpath("//*[@id='activeRadio']");
-	private By inactive  = By.xpath("//*[@id='inactiveRadio']");
+	private By dropdownActive = By.xpath("//td[@class='']/select");
 	private By saveLocation  = By.xpath("//*[@id='saveBtn']");
 	private By backLocation  = By.xpath("//*[@id='cancelBtn']");
+	private By activeRadiobutton  = By.xpath("//span[.='Active']");
+	private By inactiveRadiobutton  = By.xpath("//span[.='Inactive']");
 	
+	
+	public WebElement getActiveRadiobutton() {
+		return driver.findElement(activeRadiobutton);
+	}
+	public WebElement getInactiveRadiobutton() {
+		return driver.findElement(inactiveRadiobutton);
+	}
 	public WebElement getLocationNameFilter() {
 		return driver.findElement(locationNameFilter);
 	}
@@ -46,12 +54,7 @@ public class CreateLocationPage {
 	public WebElement getBackLocation() {
 		return driver.findElement(backLocation);
 	}
-	public WebElement getInactive() {
-		return driver.findElement(inactive);
-	}
-	public WebElement getActive() {
-		return driver.findElement(active);
-	}
+
 	public WebElement getNotes() {
 		return driver.findElement(notes);
 	}

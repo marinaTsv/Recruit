@@ -22,6 +22,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 import com.sirma.pageObjects.AddCandidateManuallyPage;
 import com.sirma.pageObjects.CandidatesPage;
@@ -43,7 +44,7 @@ public class CreateCompanyStepDefinition extends Base {
 	HomePage hp = new HomePage(driver);
 
 
-	
+
 	
 	@And("^Click on Sttings menu$")
 	public void click_on_Sttings_menu() throws Throwable {
@@ -109,6 +110,7 @@ public class CreateCompanyStepDefinition extends Base {
 		companyNameFilter.sendKeys(companyName);
 		List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + companyName + "']")));
 		Assert.assertFalse(result.isEmpty());
+		log.info("Company was created");
 	}
 	
     @Then("^Validate the Company was not created$")
@@ -118,18 +120,21 @@ public class CreateCompanyStepDefinition extends Base {
 		companyNameFilter.sendKeys(companyName);
 		List<WebElement> result = driver.findElements(By.xpath(("//a[.='" + companyName + "']")));
 		Assert.assertTrue(result.isEmpty());
+		log.info("Company was not created");
     }
 	
     @Then("^Validate companyLogo file upload$")
     public void validate_companylogo_file_upload() throws Throwable {
       	 List<WebElement> uploadedFile = driver.findElements(By.xpath("//span[.='Upload file']"));
        	 Assert.assertTrue(uploadedFile.isEmpty());
+       	log.info("CompanyLogo file was uploaded");
     }
     
     @And("^Validate companyLogo file removal$")
     public void validate_companylogo_file_removal() throws Throwable {
       	 List<WebElement> uploadedFile = driver.findElements(By.xpath("//span[.='Upload file']"));
        	 Assert.assertFalse(uploadedFile.isEmpty());
+      	log.info("CompanyLogo file removal");
     }
     
     @When("^Click button Back in Create Company Page$")
@@ -145,6 +150,7 @@ public class CreateCompanyStepDefinition extends Base {
     @Then("^Error message for unsupported file type appears$")
     public void error_message_for_unsupported_file_type_appears() throws Throwable {
     	Assert.assertTrue(createCompanyPage.getМessageSupportedFiles().isDisplayed());
+    	log.info("Unsupported file type message appeared");
     	
     }
 

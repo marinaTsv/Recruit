@@ -31,7 +31,7 @@ public class OpenCreateCandidateStepDefinition extends Base {
 	public void click_on_Candidates_menu() throws Throwable {
 		HomePage hp = new HomePage(driver);
 		hp.getCandidates().click();
-		log.atDebug().log("Click on Candidates Menu");
+		//log.atDebug().log("Click on Candidates Menu");
 	}
 
 	@When("^Click on Add Candidates button$")

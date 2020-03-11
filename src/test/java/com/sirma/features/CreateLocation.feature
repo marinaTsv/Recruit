@@ -51,6 +51,7 @@ And Click on Create Location button
 And Fill in LocationName
 And Select Company_inLocation
 And Fill In Country
+And Fill In City
 And Fill In Address
 Then Validate that SaveLocation button is enabled
 And End test
@@ -66,9 +67,10 @@ And Click on Create Location button
 And Fill in LocationName
 And Select Company_inLocation
 And Fill In Country
+And Fill In City
 And Fill In Address
 And Click button SaveDepartment
-Then Validate the Department was created as Active
+Then Validate the Location was created as Active
 And End test
 
 @Location5
@@ -82,8 +84,9 @@ And Click on Create Location button
 And Fill in LocationName
 And Select Company_inLocation
 And Fill In Country
+And Fill In City
 And Fill In Address
-And Click Inactive radiobutton
+And Click Inactive_Location radiobutton
 And Click button SaveDepartment
-Then Validate the Department was created as Inctive
+Then Validate the Location was created as Inctive
 And End test
