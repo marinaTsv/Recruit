@@ -8,10 +8,10 @@ import cucumber.api.junit.Cucumber;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 //@RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/java/com/sirma/features", glue = "com/sirma/stepDefinitions", tags = {"@Location5"}) 
+@CucumberOptions(features = "src/test/java/com/sirma/features", glue = "com/sirma/stepDefinitions", tags = {"@Create_Job1"}) 
 // will execute everything in the features package; provide the file name to execute only it
 //package with features and package with step definitions must be in one and the same folder
 public class TestRunner extends AbstractTestNGCucumberTests {
 }
 
-//, tags = {"@Department4"}
+//, tags = {"@Create_Job1"}

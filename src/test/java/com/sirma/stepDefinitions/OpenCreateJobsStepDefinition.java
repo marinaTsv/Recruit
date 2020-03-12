@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -27,7 +28,8 @@ import junit.framework.Assert;
 @RunWith(Cucumber.class)
 public class OpenCreateJobsStepDefinition extends Base {
 	private static Logger log = LogManager.getLogger(OpenCreateJobsStepDefinition.class.getName());
-
+	WebDriverWait wait = new WebDriverWait(driver, 10000);
+	
 	@And("^Click on Jobs menu$")
 	public void click_on_jobs_menu() throws Throwable {
 		HomePage hp = new HomePage(driver);
@@ -39,21 +41,23 @@ public class OpenCreateJobsStepDefinition extends Base {
 
 		JobsPage jp = new JobsPage(driver);
 		WebElement element = jp.getCreateJobButton();
-
-		WebDriverWait wait = new WebDriverWait(driver, 60000);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@class='p-component-overlay p-dialog-mask']")));
-		
-		 if (element.isEnabled() && element.isDisplayed()) {
-				System.out.println("Enabled&Displayed");
- 				element.click();	
- 				log.atDebug().log("Click on Create Job button");
-		
+		try {
+			   wait.until(ExpectedConditions.elementToBeClickable(element));
+			   System.out.println("Element is clickable");
+				 if (element.isEnabled() && element.isDisplayed()) {
+		 				element.click();	
+		 				log.info("Click on Create Job button");}
+			 }
+			 catch(TimeoutException e) {
+			   System.out.println("Create Job Button wasn't clickable");
+			}	
 /*		if (element.isEnabled() && element.isDisplayed()) {
 			System.out.println("Enabled&Displayed");
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 		}*/
 	}
-	}
+	
 
 	@Then("^Create Jobs form opens$")
 	public void create_jobs_form_opens() throws Throwable {

@@ -5,3 +5,4 @@ encoding//src/main/java/com/sirma/pageObjects/CreateLocationPage.java=UTF-8
 encoding//src/test/java/com/sirma/stepDefinitions/CreateCompanyStepDefinition.java=UTF-8
 encoding//src/test/java/com/sirma/stepDefinitions/CreateDepartmentStepDefinition.java=UTF-8
 encoding//src/test/java/com/sirma/stepDefinitions/CreateLocationStepDefinition.java=UTF-8
+encoding//src/test/java/com/sirma/stepDefinitions/RolesStepDefinition.java=UTF-8

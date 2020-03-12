@@ -1,3 +1,4 @@
-15:45:31.877 [main] INFO  com.sirma.stepDefinitions.CreateDepartmentStepDefinition - The option is: Active
-15:45:31.883 [main] INFO  com.sirma.stepDefinitions.CreateDepartmentStepDefinition - The department was created Inactive
-15:45:31.977 [main] DEBUG com.sirma.stepDefinitions.AGeneralStepDefinition - Driver closed
+18:02:01.555 [main] DEBUG com.sirma.stepDefinitions.AGeneralStepDefinition - Driver closed
+11:08:05.777 [main] INFO  com.sirma.stepDefinitions.OpenCreateJobsStepDefinition - Click on Create Job button
+11:08:21.198 [main] INFO  com.sirma.stepDefinitions.CreateJobStepDefinition - Job was created
+11:08:21.245 [main] DEBUG com.sirma.stepDefinitions.AGeneralStepDefinition - Driver closed
